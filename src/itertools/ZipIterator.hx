@@ -1,5 +1,8 @@
 package itertools;
 
+/**
+	A pair of zipped elements.
+**/
 typedef Pair<T, U> = {
 	first:T,
 	second:U,

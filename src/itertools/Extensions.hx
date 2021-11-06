@@ -1,6 +1,6 @@
 package itertools;
 
-import haxe.Exception;
+import itertools.EnumerateIterator.Indexed;
 import itertools.ZipIterator.Pair;
 import haxe.ds.Option;
 
@@ -148,6 +148,12 @@ class Extensions {
 	**/
 	public static function filter<T>(it:Iterator<T>, pred:T->Bool):Iterator<T>
 		return new FilterIterator(it, pred);
+
+	/**
+		Creates an `EnumerateIterator`.
+	**/
+	public static function enumerate<T>(it:Iterator<T>):Iterator<Indexed<T>>
+		return new EnumerateIterator(it);
 
 	/**
 		Creates a `ZipIterator`.
