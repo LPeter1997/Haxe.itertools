@@ -12,6 +12,43 @@ import haxe.ds.Option;
 **/
 class Extensions {
 	/**
+		Collects the elements of an iterator to an `Array`.
+	**/
+	public static function toArray<T>(it:Iterator<T>):Array<T> {
+		var result = new Array();
+		while (it.hasNext())
+			result.push(it.next());
+		return result;
+	}
+
+	/**
+		Collects the elements of an iterator to a `Map` with a given key and value
+		selector.
+	**/
+	@:generic
+	public static function toMapProj<T, K, V>(it:Iterator<T>, keySel:T->K, valSel:T->V):Map<K, V> {
+		var result = new Map<K, V>();
+		while (it.hasNext()) {
+			var i = it.next();
+			result.set(keySel(i), valSel(i));
+		}
+		return result;
+	}
+
+	/**
+		Collects the elements of an iterator to a `Map` with a given key selector.
+	**/
+	@:generic
+	public static function toMap<T, K>(it:Iterator<T>, keySel:T->K):Map<K, T>  {
+		var result = new Map<K, T>();
+		while (it.hasNext()) {
+			var i = it.next();
+			result.set(keySel(i), i);
+		}
+		return result;
+	}
+
+	/**
 		Retrieves the first element of an iterator, if any.
 	**/
 	public static function first<T>(it:Iterator<T>):Option<T>
