@@ -27,6 +27,17 @@ class Extensions {
 	}
 
 	/**
+		Retrieves the nth element of an iterator, if any.
+	**/
+	public static function nth<T>(it:Iterator<T>, n:Int):Option<T> {
+		while (n > 0 && it.hasNext()) {
+			it.next();
+			--n;
+		}
+		return if (it.hasNext()) Some(it.next()) else None;
+	}
+
+	/**
 		Checks, if a given predicate is true for all elements of an iterator.
 	**/
 	public static function all<T>(it:Iterator<T>, pred:T->Bool):Bool {
@@ -79,7 +90,7 @@ class Extensions {
 		Creates an iterator that filters and maps an iterator by transforming to
 		an `Optional<U>`, and only keeping `Some(U)`.
 	**/
-	public static function filter_map<T, U>(it:Iterator<T>, f:T->Option<U>):Iterator<U>
+	public static function filterMap<T, U>(it:Iterator<T>, f:T->Option<U>):Iterator<U>
 		return map(filter(map(it, f), x -> switch (x) {
 			case Some(x): true;
 			case None: false;
@@ -111,4 +122,28 @@ class Extensions {
 	**/
 	public static function chain<T>(it1:Iterator<T>, it2:Iterator<T>):Iterator<T>
 		return new ChainIterator(it1, it2);
+
+	/**
+		Creates a `SkipIterator`.
+	**/
+	public static function skip<T>(it:Iterator<T>, n:Int):Iterator<T>
+		return new SkipIterator(it, n);
+
+	/**
+		Creates a `SkipWhileIterator`.
+	**/
+	public static function skipWhile<T>(it:Iterator<T>, pred:T->Bool):Iterator<T>
+		return new SkipWhileIterator(it, pred);
+
+	/**
+		Creates a `TakeIterator`.
+	**/
+	public static function take<T>(it:Iterator<T>, n:Int):Iterator<T>
+		return new TakeIterator(it, n);
+
+	/**
+		Creates a `TakeWhileIterator`.
+	**/
+	public static function takeWhile<T>(it:Iterator<T>, pred:T->Bool):Iterator<T>
+		return new TakeWhileIterator(it, pred);
 }
