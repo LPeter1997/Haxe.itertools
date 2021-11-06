@@ -51,7 +51,20 @@ class Extensions {
 	}
 
 	/**
-		Attempts to find the first element in an iterator that matches the given predicate.
+		Counts the number of elements in an iterator.
+	**/
+	public static function count<T>(it:Iterator<T>):Int {
+		var cnt = 0;
+		while (it.hasNext()) {
+			it.next();
+			++cnt;
+		}
+		return cnt;
+	}
+
+	/**
+		Attempts to find the first element in an iterator that matches the given
+		predicate.
 	**/
 	public static function find<T>(it:Iterator<T>, pred:T->Bool):Option<T> {
 		while (it.hasNext()) {
@@ -61,6 +74,19 @@ class Extensions {
 		}
 		return None;
 	}
+
+	/**
+		Creates an iterator that filters and maps an iterator by transforming to
+		an `Optional<U>`, and only keeping `Some(U)`.
+	**/
+	public static function filter_map<T, U>(it:Iterator<T>, f:T->Option<U>):Iterator<U>
+		return map(filter(map(it, f), x -> switch (x) {
+			case Some(x): true;
+			case None: false;
+		}), x -> switch (x) {
+			case Some(x): x;
+			case None: throw new IteratorException("Impossible!");
+		});
 
 	/**
 		Creates a `MapIterator`.
@@ -79,4 +105,10 @@ class Extensions {
 	**/
 	public static function zip<T, U>(it1:Iterator<T>, it2:Iterator<U>):Iterator<Pair<T, U>>
 		return new ZipIterator(it1, it2);
+
+	/**
+		Creates a `ChainIterator`.
+	**/
+	public static function chain<T>(it1:Iterator<T>, it2:Iterator<T>):Iterator<T>
+		return new ChainIterator(it1, it2);
 }

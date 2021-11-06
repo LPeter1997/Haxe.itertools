@@ -5,6 +5,9 @@ typedef Pair<T, U> = {
 	second:U,
 }
 
+/**
+	An iterator making a pair iterator from two other iterators.
+**/
 class ZipIterator<T, U> {
 	final it1:Iterator<T>;
 	final it2:Iterator<U>;

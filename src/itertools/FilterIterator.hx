@@ -2,6 +2,9 @@ package itertools;
 
 import haxe.ds.Option;
 
+/**
+	An iterator that keeps elements based on a predicate.
+**/
 class FilterIterator<T> {
 	final it:Iterator<T>;
 	final pred:T->Bool;
