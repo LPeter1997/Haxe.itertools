@@ -1,0 +1,7 @@
+--class-path src
+--class-path test
+--library utest
+--main Test
+--dce full
+--define analyzer-optimize
+--debug
