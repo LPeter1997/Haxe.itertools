@@ -1,5 +1,6 @@
 package itertools;
 
+import haxe.Exception;
 import itertools.ZipIterator.Pair;
 import haxe.ds.Option;
 
@@ -146,4 +147,32 @@ class Extensions {
 	**/
 	public static function takeWhile<T>(it:Iterator<T>, pred:T->Bool):Iterator<T>
 		return new TakeWhileIterator(it, pred);
+
+	/**
+		Creates a `ScanlIterator`.
+	**/
+	public static function scanl<T, U>(it:Iterator<T>, seed:U, acc:(U, T) -> U):Iterator<U>
+		return new ScanlIterator(it, seed, acc);
+
+	/**
+		Folds left the elements of an iterator using an accumulator function.
+	**/
+	public static function foldl<T, U>(it:Iterator<T>, seed:U, acc:(U, T) -> U):U
+		return switch (last(scanl(it, seed, acc))) {
+			case Some(x): x;
+			case None: throw new IteratorException("Impossible!");
+		};
+
+	/**
+		Creates a `FlattenIterator`.
+	**/
+	public static function flatten<T>(it:Iterator<Iterator<T>>):Iterator<T>
+		return new FlattenIterator(it);
+
+	/**
+		Maps the elements of an iterator to multiple other elements that get
+		flattened.
+	**/
+	public static function flatMap<T, U>(it:Iterator<T>, f:T->Iterator<U>):Iterator<U>
+		return flatten(map(it, f));
 }
