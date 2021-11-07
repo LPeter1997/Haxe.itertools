@@ -1,4 +1,6 @@
-# Haxe.itertools
+## Itertools
+
+[The Haxelib package can be found here.](https://lib.haxe.org/p/itertools/)
 
 Many languages have a fluent API that helps working with sequences and sequence manipulation:
 C# has [LINQ](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/),
