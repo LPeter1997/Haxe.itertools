@@ -235,4 +235,10 @@ class Extensions {
 	**/
 	public static function flatMap<T, U>(it:Iterator<T>, f:T->Iterator<U>):Iterator<U>
 		return flatten(map(it, f));
+
+	/**
+		Creates a `ReverseIterator`.
+	**/
+	public static function reverse<T>(it:Iterator<T>):Iterator<T>
+		return new ReverseIterator(it);
 }
