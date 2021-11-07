@@ -14,10 +14,11 @@ typedef Grouping<K, T> = {
     An iterator that groups elements by a key.
 **/
 @:generic
+@:remove
 class GroupByIterator<K, T> {
     final it:Iterator<T>;
     final keySel:T->K;
-    var grouping:Map<K, Array<T>> = new Map();
+    var grouping:Map<K, Array<T>>;
     var groupingIt:KeyValueIterator<K, Array<T>>;
 
     public function new(it, keySel) {
@@ -41,8 +42,9 @@ class GroupByIterator<K, T> {
     }
 
     function buildIfNeeded() {
-        if (this.groupingIt != null)
+        if (this.grouping != null)
             return;
+        this.grouping = new Map();
         while (this.it.hasNext()) {
             var i = this.it.next();
             var k = this.keySel(i);

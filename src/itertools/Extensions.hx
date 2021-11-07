@@ -1,5 +1,6 @@
 package itertools;
 
+import itertools.GroupByIterator.Grouping;
 import itertools.EnumerateIterator.Indexed;
 import itertools.ZipIterator.Pair;
 import haxe.ds.Option;
@@ -241,4 +242,11 @@ class Extensions {
     **/
     public static function reverse<T>(it:Iterator<T>):Iterator<T>
         return new ReverseIterator(it);
+
+    /**
+        Creates a `GroupByIterator`.
+    **/
+    @:generic
+    public static function groupBy<K, T>(it:Iterator<T>, keySel:T->K):Iterator<Grouping<K, T>>
+        return new GroupByIterator(it, keySel);
 }
