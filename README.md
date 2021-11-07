@@ -18,7 +18,14 @@ This library attempts to fill this hole in the Haxe ecosystem.
 
 ## Examples
 
-TODO
+Collecting the names of students into a comma-separated string, who have have an average
+over 4:
+```hx
+var names = students
+    .filter(s -> s.average() > 4)
+    .map(s -> s.name)
+    .join(", ");
+```
 
 ## Provided functionality
 
