@@ -39,13 +39,30 @@ class Extensions {
 		Collects the elements of an iterator to a `Map` with a given key selector.
 	**/
 	@:generic
-	public static function toMap<T, K>(it:Iterator<T>, keySel:T->K):Map<K, T>  {
+	public static function toMap<T, K>(it:Iterator<T>, keySel:T->K):Map<K, T> {
 		var result = new Map<K, T>();
 		while (it.hasNext()) {
 			var i = it.next();
 			result.set(keySel(i), i);
 		}
 		return result;
+	}
+
+	/**
+		Joins iterator elements with a separator into a string.
+	**/
+	public static function join<T>(it:Iterator<T>, sep:String):String {
+		var result = new StringBuf();
+		if (it.hasNext()) {
+			var first = it.next();
+			result.add(first);
+			while (it.hasNext()) {
+				var rest = it.next();
+				result.add(sep);
+				result.add(rest);
+			}
+		}
+		return result.toString();
 	}
 
 	/**
