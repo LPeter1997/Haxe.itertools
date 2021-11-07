@@ -3,25 +3,25 @@ package itertools;
 import haxe.ds.Option;
 
 /**
-	An iterator that flattens an iterator of iterators.
+    An iterator that flattens an iterator of iterators.
 **/
 class FlattenIterator<T> {
-	final it:Iterator<Iterator<T>>;
-	var peeked:Option<Iterator<T>> = None;
+    final it:Iterator<Iterator<T>>;
+    var peeked:Option<Iterator<T>> = None;
 
-	public function new(it) {
-		this.it = it;
-	}
+    public function new(it) {
+        this.it = it;
+    }
 
-	public function hasNext()
-		return this.peekNext().match(Some(_));
+    public function hasNext()
+        return this.peekNext().match(Some(_));
 
-	public function next() {
+    public function next() {
         var p = this.peekNext();
-		return switch (p) {
-			case Some(x): x.next();
-			case None: throw new IteratorException("There are no more elements to flatten!");
-		}
+        return switch (p) {
+            case Some(x): x.next();
+            case None: throw new IteratorException("There are no more elements to flatten!");
+        }
     }
 
     function peekNext() {

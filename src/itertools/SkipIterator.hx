@@ -1,23 +1,23 @@
 package itertools;
 
 /**
-	An iterator that skips the first n elements.
+    An iterator that skips the first n elements.
 **/
 class SkipIterator<T> {
-	final it:Iterator<T>;
-	var n:Int;
+    final it:Iterator<T>;
+    var n:Int;
 
-	public function new(it, n) {
-		this.it = it;
-		this.n = n;
-	}
+    public function new(it, n) {
+        this.it = it;
+        this.n = n;
+    }
 
-	public function hasNext() {
+    public function hasNext() {
         this.skipIfNeeded();
         return this.it.hasNext();
     }
 
-	public function next() {
+    public function next() {
         this.skipIfNeeded();
         return this.it.next();
     }

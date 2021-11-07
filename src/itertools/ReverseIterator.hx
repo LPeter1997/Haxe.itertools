@@ -1,23 +1,23 @@
 package itertools;
 
 /**
-	An iterator that goes in reverse order.
+    An iterator that goes in reverse order.
 **/
 class ReverseIterator<T> {
-	final it:Iterator<T>;
-	var arr:Array<T>;
+    final it:Iterator<T>;
+    var arr:Array<T>;
     var idx:Int;
 
-	public function new(it) {
-		this.it = it;
-	}
+    public function new(it) {
+        this.it = it;
+    }
 
-	public function hasNext() {
+    public function hasNext() {
         this.buildIfNeeded();
         return this.idx > 0;
     }
 
-	public function next() {
+    public function next() {
         this.buildIfNeeded();
         this.idx -= 1;
         return this.arr[this.idx];

@@ -4,13 +4,13 @@ import utest.Assert;
 using itertools.Extensions;
 
 class TestMap extends Test {
-	public function new() {}
+    public function new() {}
 
-	function testDouble() {
-		var r = [1, 2, 3].iterator().map(x -> x * 2);
-		Assert.isTrue(r.next() == 2);
-		Assert.isTrue(r.next() == 4);
-		Assert.isTrue(r.next() == 6);
+    function testDouble() {
+        var r = [1, 2, 3].iterator().map(x -> x * 2);
+        Assert.isTrue(r.next() == 2);
+        Assert.isTrue(r.next() == 4);
+        Assert.isTrue(r.next() == 6);
         Assert.isFalse(r.hasNext());
-	}
+    }
 }

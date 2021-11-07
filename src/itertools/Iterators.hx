@@ -7,8 +7,8 @@ class Iterators {
     /**
         Creates a `CountIterator`.
     **/
-	public static function count(start:Int = 0, step:Int = 1):Iterator<Int>
-		return new CountIterator(start, step);
+    public static function count(start:Int = 0, step:Int = 1):Iterator<Int>
+        return new CountIterator(start, step);
 
     /**
         Creates a `RepeatIterator`.
