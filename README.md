@@ -33,6 +33,11 @@ var names = students
     .join(", ");
 ```
 
+## Maturity
+
+Please note, that the library is still early-stage. If you feel like something fundamental/useful
+is missing, please open an issue!
+
 ## Provided functionality
 
 The library can be used through just 2 types: `Iterators` and `Extensions`.
