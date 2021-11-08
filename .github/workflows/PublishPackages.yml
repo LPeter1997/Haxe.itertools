@@ -26,4 +26,4 @@ jobs:
         path: itertools.zip
     - name: Publish to Haxelib
       run: |
-        haxelib submit itertools.zip ${{ HAXELIB_NAME }} ${{ HAXELIB_PASS }} --always
+        haxelib submit itertools.zip ${{ secrets.HAXELIB_NAME }} ${{ secrets.HAXELIB_PASS }} --always
