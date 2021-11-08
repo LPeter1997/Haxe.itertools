@@ -28,7 +28,7 @@ jobs:
           haxe-version: 4.2.4
       - name: Install dependencies
         run: |
-          haxelib install all
+          haxelib --always install all
       - name: Run tests
         run: |
           haxe tests.hxml
