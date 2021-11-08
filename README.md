@@ -106,3 +106,5 @@ Contents of `Extensions`:
  * `flatMap(it, f)`: Transforms each element of `it` into a sequence, that are then flattened.
 
  * `reverse(it)`: Reverses the order of the elements of `it`.
+
+ * `groupBy(it, keySel:T)`: Groups elements of `it`, selecting the group key with `keySel`.

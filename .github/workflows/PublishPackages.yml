@@ -1,0 +1,29 @@
+name: 'Publish packages'
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  deployment:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Clone the repo
+      uses: actions/checkout@v2
+    - name: Set up Haxe
+      uses: krdlab/setup-haxe@v1
+      with:
+        haxe-version: 4.2.4
+    - name: Zip up files
+      uses: papeloto/action-zip@v1
+      with:
+        files: src haxelib.json LICENSE README.md CHANGES.md
+        dest: itertools.zip
+    - name: Upload to GitHub
+      uses: actions/upload-artifact@v2
+      with:
+        name: itertools
+        path: itertools.zip
+    - name: Publish to Haxelib
+      run: |
+        haxelib submit itertools.zip ${{ HAXELIB_NAME }} ${{ HAXELIB_PASS }} --always
