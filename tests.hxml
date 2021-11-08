@@ -5,3 +5,4 @@
 --dce full
 --define analyzer-optimize
 --debug
+--interp
