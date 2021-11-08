@@ -1,0 +1,32 @@
+name: 'Documentation generation'
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+    paths:
+      - 'src/**'
+      - 'docs/**'
+
+jobs:
+  documentation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone the repo
+        uses: actions/checkout@v2
+      - name: Set up Haxe
+        uses: krdlab/setup-haxe@v1
+        with:
+          haxe-version: 4.2.4
+      - name: Install dependencies
+        run: |
+          haxelib --always install all
+      - name: Generate documentation
+        run: |
+          haxe dox.hxml
+      - name: Publish to GitHub Pages
+        uses: maxheld83/ghpages@master
+        env:
+          BUILD_DIR: docs/pages
+          GH_PAT: ${{ secrets.GH_PAT }}
