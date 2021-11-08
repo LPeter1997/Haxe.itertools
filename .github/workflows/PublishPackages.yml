@@ -17,7 +17,7 @@ jobs:
     - name: Zip up files
       uses: papeloto/action-zip@v1
       with:
-        files: src haxelib.json LICENSE README.md CHANGES.md
+        files: src/ haxelib.json LICENSE README.md CHANGES.md
         dest: itertools.zip
     - name: Upload to GitHub
       uses: actions/upload-artifact@v2
