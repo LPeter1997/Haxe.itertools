@@ -1,0 +1,11 @@
+--class-path src
+--define doc-gen
+--macro include('itertools')
+--neko bin/dummy.n
+--xml docs/types.xml
+--no-output
+
+--next
+
+--library dox
+--cmd haxelib run dox --input-path docs --output-path docs/pages --include "^itertools*"
