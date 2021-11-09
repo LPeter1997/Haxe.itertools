@@ -21,6 +21,6 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: itertools
-        path: ${{ github.workspace }}/itertools.zip
+        path: itertools.zip
     - name: Publish to Haxelib
       run: haxelib submit itertools.zip ${{ secrets.HAXELIB_NAME }} ${{ secrets.HAXELIB_PASS }} --always
