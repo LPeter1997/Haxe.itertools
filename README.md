@@ -42,14 +42,16 @@ is missing, please open an issue!
 
 ## Provided functionality
 
-The library can be used through just 2 types: `Iterators` and `Extensions`.
-The `Iterators` class contains functions that construct elemental iterators, like
+[The full API documentation can be found here.](https://languagedev.github.io/Haxe.itertools/)
+
+The library can be used through just 2 types: `Basic` and `Extensions`.
+The `Basic` class contains functions that construct elemental iterators, like
 a basic counter, or repeating an element infinitely. The `Extensions` class contains
 extension functions for iterators, thus it is advised to use it with `using itertools.Extensions;`.
 
 All operations (unless they reduce to a final result, like `all` or `count`) are lazy, meaning that they only perform computations, when they are iterated.
 
-Contents of `Iterators`:
+Contents of `Basic`:
 
  * `count(start = 0, step = 1)`: Creates an infinite `Int` counter iterator,
  starting from `start`, stepping `step` each time.
@@ -57,6 +59,9 @@ Contents of `Iterators`:
  * `repeat(element)`: Creates an infinite iterator, that repeats `element`.
 
 Contents of `Extensions`:
+
+ * `toIterable(it)`: Casts `it` to an `Iterable<T>`. Useful for unambiguously referring to the extension functions when working with `Array<T>`s.
+
  * `toArray(it)`: Collects the elements of `it` into an `Array<T>`.
 
  * `toMap(it, keySel)`: Collects the elements of `it` into a `Map<K, V>`, using the keys that `keySel` selects from each element.

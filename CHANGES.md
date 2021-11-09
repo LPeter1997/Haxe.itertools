@@ -1,3 +1,7 @@
+### 0.0.4
+
+Converted everything to work on `Iterable<T>`s. Added `toIterable()` extension.
+
 ### 0.0.3
 
 Version bump.
