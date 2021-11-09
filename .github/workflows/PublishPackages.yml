@@ -27,7 +27,7 @@ jobs:
       with:
         repo_token: ${{ secrets.GH_PAT }}
         file: haxelib.zip
-        asset_name: haxelib
+        asset_name: haxelib.zip
         tag: ${{ github.ref }}
         overwrite: true
         body: "See CHANGES.md for the changes."
