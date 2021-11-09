@@ -1,3 +1,7 @@
+### 0.0.3
+
+Version bump.
+
 ### 0.0.2
 
 Added `groupBy`.
