@@ -7,12 +7,12 @@ class TestFlatten extends Test {
     public function new() {}
 
     function testAllEmpties() {
-        var r = [[].iterator(), [].iterator(), [].iterator()].iterator().flatten();
+        var r = [[], [], []].flatten().iterator();
         Assert.isFalse(r.hasNext());
     }
 
     function testFirstNotEmpty() {
-        var r = [[1, 2, 3].iterator(), [].iterator(), [].iterator()].iterator().flatten();
+        var r = [[1, 2, 3], [], []].flatten().iterator();
         Assert.isTrue(r.hasNext());
         Assert.isTrue(r.next() == 1);
         Assert.isTrue(r.hasNext());
@@ -23,7 +23,7 @@ class TestFlatten extends Test {
     }
 
     function testSecondNotEmpty() {
-        var r = [[].iterator(), [1, 2, 3].iterator(), [].iterator()].iterator().flatten();
+        var r = [[], [1, 2, 3], []].flatten().iterator();
         Assert.isTrue(r.hasNext());
         Assert.isTrue(r.next() == 1);
         Assert.isTrue(r.hasNext());
@@ -34,7 +34,7 @@ class TestFlatten extends Test {
     }
 
     function testLastNotEmpty() {
-        var r = [[].iterator(), [].iterator(), [1, 2, 3].iterator()].iterator().flatten();
+        var r = [[], [], [1, 2, 3]].flatten().iterator();
         Assert.isTrue(r.hasNext());
         Assert.isTrue(r.next() == 1);
         Assert.isTrue(r.hasNext());
@@ -45,7 +45,7 @@ class TestFlatten extends Test {
     }
 
     function testNotEmpty() {
-        var r = [[1].iterator(), [2].iterator(), [3, 4].iterator()].iterator().flatten();
+        var r = [[1], [2], [3, 4]].flatten().iterator();
         Assert.isTrue(r.hasNext());
         Assert.isTrue(r.next() == 1);
         Assert.isTrue(r.hasNext());
@@ -58,7 +58,7 @@ class TestFlatten extends Test {
     }
 
     function testNotEmptyWithGap() {
-        var r = [[1, 2].iterator(), [].iterator(), [3, 4].iterator()].iterator().flatten();
+        var r = [[1, 2], [], [3, 4]].flatten().iterator();
         Assert.isTrue(r.hasNext());
         Assert.isTrue(r.next() == 1);
         Assert.isTrue(r.hasNext());
@@ -71,7 +71,7 @@ class TestFlatten extends Test {
     }
 
     function testNotEmptyWithGaps() {
-        var r = [[1, 2].iterator(), [].iterator(), [].iterator(), [3, 4].iterator()].iterator().flatten();
+        var r = [[1, 2], [], [], [3, 4]].flatten().iterator();
         Assert.isTrue(r.hasNext());
         Assert.isTrue(r.next() == 1);
         Assert.isTrue(r.hasNext());

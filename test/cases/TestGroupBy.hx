@@ -7,15 +7,14 @@ class TestGroupBy extends Test {
     public function new() {}
 
     function testEmpty() {
-        var r = [].iterator().groupBy(x -> x % 3);
+        var r = [].groupBy(x -> x % 3).iterator();
         Assert.isFalse(r.hasNext());
     }
 
     function testNotEmpty() {
         var r = [1, 2, 3, 5, 6, 6, 4, 7, 2]
-            .iterator()
             .groupBy(x -> x % 3)
-            .toMapProj(g -> g.key, g -> g.values.iterator().toArray());
+            .toMapProj(g -> g.key, g -> g.values.toArray());
 
         Assert.isTrue(r[0].length == 3);
         Assert.isTrue(r[1].length == 3);

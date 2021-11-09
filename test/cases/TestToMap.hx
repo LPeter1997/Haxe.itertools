@@ -1,5 +1,6 @@
 package cases;
 
+import itertools.FuncIterable;
 import utest.Assert;
 using itertools.Extensions;
 
@@ -8,19 +9,19 @@ class TestToMap extends Test {
 
     function testEmpty() {
         var a: Array<Int> = [];
-        var i = a.iterator().toMap(x -> x);
-        Assert.isTrue(i.keys().count() == 0);
+        var i = a.toMap(x -> x);
+        Assert.isTrue(new FuncIterable(() -> i.keys()).count() == 0);
     }
 
     function testNotEmptyWithoutValueSelector() {
-        var i = [1, 2, 3].iterator().toMap(i -> '$i');
+        var i = [1, 2, 3].toMap(i -> '$i');
         Assert.isTrue(i["1"] == 1);
         Assert.isTrue(i["2"] == 2);
         Assert.isTrue(i["3"] == 3);
     }
 
     function testNotEmptyWithValueSelector() {
-        var i = [1, 2, 3].iterator().toMapProj(i -> '$i', i -> i * 2);
+        var i = [1, 2, 3].toMapProj(i -> '$i', i -> i * 2);
         Assert.isTrue(i["1"] == 2);
         Assert.isTrue(i["2"] == 4);
         Assert.isTrue(i["3"] == 6);

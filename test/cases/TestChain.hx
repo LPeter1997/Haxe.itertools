@@ -7,26 +7,26 @@ class TestChain extends Test {
     public function new() {}
 
     function testTwoEmptys() {
-        var i = [].iterator().chain([].iterator());
+        var i = [].chain([]).iterator();
         Assert.isFalse(i.hasNext());
     }
 
     function testFirstEmptySecondSingle() {
-        var i = [].iterator().chain([1].iterator());
+        var i = [].chain([1]).iterator();
         Assert.isTrue(i.hasNext());
         Assert.isTrue(i.next() == 1);
         Assert.isFalse(i.hasNext());
     }
 
     function testFirstSingleSecondEmpty() {
-        var i = [1].iterator().chain([].iterator());
+        var i = [1].chain([]).iterator();
         Assert.isTrue(i.hasNext());
         Assert.isTrue(i.next() == 1);
         Assert.isFalse(i.hasNext());
     }
 
     function testBothSingle() {
-        var i = [1].iterator().chain([2].iterator());
+        var i = [1].chain([2]).iterator();
         Assert.isTrue(i.hasNext());
         Assert.isTrue(i.next() == 1);
         Assert.isTrue(i.hasNext());
@@ -35,7 +35,7 @@ class TestChain extends Test {
     }
 
     function testBothMany() {
-        var i = [1, 2, 3].iterator().chain([4, 5, 6].iterator());
+        var i = [1, 2, 3].chain([4, 5, 6]).iterator();
         Assert.isTrue(i.hasNext());
         Assert.isTrue(i.next() == 1);
         Assert.isTrue(i.hasNext());

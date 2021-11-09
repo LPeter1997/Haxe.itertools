@@ -7,12 +7,12 @@ class TestToArray extends Test {
     public function new() {}
 
     function testEmpty() {
-        var i = [].iterator().toArray();
+        var i = [].toArray();
         Assert.isTrue(i.length == 0);
     }
 
     function testNotEmpty() {
-        var i = [1, 2, 3].iterator().toArray();
+        var i = [1, 2, 3].toArray();
         Assert.isTrue(i.length == 3);
         Assert.isTrue(i[0] == 1);
         Assert.isTrue(i[1] == 2);

@@ -24,7 +24,7 @@ class SkipIterator<T> {
 
     function skipIfNeeded() {
         if (this.n > 0) {
-            Extensions.nth(it, this.n - 1);
+            Extensions.nth(new FuncIterable(() -> it), this.n - 1);
             this.n = 0;
         }
     }

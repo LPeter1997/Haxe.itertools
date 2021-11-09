@@ -7,17 +7,17 @@ class TestJoin extends Test {
     public function new() {}
 
     function testEmpty() {
-        var r = [].iterator().join(", ");
+        var r = Extensions.join([], ", ");
         Assert.isTrue(r == "");
     }
 
     function testSingle() {
-        var r = [1].iterator().join(", ");
+        var r = Extensions.join([1], ", ");
         Assert.isTrue(r == "1");
     }
 
     function testMany() {
-        var r = [1, 2, 3].iterator().join(", ");
+        var r = Extensions.join([1, 2, 3], ", ");
         Assert.isTrue(r == "1, 2, 3");
     }
 }
