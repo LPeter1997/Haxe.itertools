@@ -16,11 +16,20 @@ jobs:
         haxe-version: 4.2.4
     - name: Zip up files
       run: |
-        7z a itertools.zip src haxelib.json LICENSE README.md CHANGES.md
-    - name: Upload to GitHub
+        7z a haxelib.zip src haxelib.json LICENSE README.md CHANGES.md
+    - name: Upload artifact to GitHub
       uses: actions/upload-artifact@v2
       with:
-        name: itertools
-        path: itertools.zip
+        name: haxelib
+        path: haxelib.zip
+    - name: Upload artifact to GitHub Releases
+      uses: svenstaro/upload-release-action@v2
+      with:
+        repo_token: ${{ secrets.GH_PAT }}
+        file: haxelib.zip
+        asset_name: haxelib
+        tag: ${{ github.ref }}
+        overwrite: true
+        body: "See CHANGES.md for the changes."
     - name: Publish to Haxelib
-      run: haxelib submit itertools.zip ${{ secrets.HAXELIB_NAME }} ${{ secrets.HAXELIB_PASS }} --always
+      run: haxelib submit haxelib.zip ${{ secrets.HAXELIB_NAME }} ${{ secrets.HAXELIB_PASS }} --always
