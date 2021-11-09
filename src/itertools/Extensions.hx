@@ -13,6 +13,15 @@ import haxe.ds.Option;
 **/
 class Extensions {
     /**
+        Utility to cast an iterable type to an `Iterable<T>`.
+
+        Useful, if using the extension functions like `map` on an `Array`, so
+        the extension is invoked instead of the built-in.
+    **/
+    public static function asIterable<T>(it:Iterable<T>):Iterable<T>
+        return it;
+
+    /**
         Collects the elements of an iterable to an `Array`.
 
         @param it The iterable to collect the elements of.
