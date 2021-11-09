@@ -24,6 +24,8 @@ This library attempts to fill this hole in the Haxe ecosystem.
 
 ## Examples
 
+[The full API documentation can be found here.](https://languagedev.github.io/Haxe.itertools/)
+
 Collecting the names of students into a comma-separated string, who have have an average
 over 4:
 ```hx
