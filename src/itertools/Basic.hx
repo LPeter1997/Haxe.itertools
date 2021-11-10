@@ -23,4 +23,21 @@ class Basic {
     **/
     public static function repeat<T>(element:T):Iterable<T>
         return new FuncIterable(() -> new RepeatIterator(element));
+
+    /**
+        Creates an iterable, that yields no elements.
+
+        @returns An iterable, that has no elements.
+    **/
+    public static function empty<T>():Iterable<T>
+        return new FuncIterable(() -> new EmptyIterator());
+
+    /**
+        Creates an iterable, that contains a single element.
+
+        @param element The element to return from the iterable.
+        @returns An iterable, that yields `element` once.
+    **/
+    public static function one<T>(element:T):Iterable<T>
+        return Extensions.take(repeat(element), 1);
 }

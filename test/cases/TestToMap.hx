@@ -10,7 +10,7 @@ class TestToMap extends Test {
     function testEmpty() {
         var a: Array<Int> = [];
         var i = a.toMap(x -> x);
-        Assert.isTrue(new FuncIterable(() -> i.keys()).count() == 0);
+        Assert.isTrue(Extensions.asOnceIterable(i.keys()).count() == 0);
     }
 
     function testNotEmptyWithoutValueSelector() {

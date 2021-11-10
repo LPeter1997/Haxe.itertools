@@ -7,7 +7,7 @@
         "utility"
     ],
     "description": "Provides a fluent iterator API similar to C# LINQ or Java Stream.",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "classPath": "src/",
     "releasenote": "See CHANGES.md for changes.",
     "contributors": [

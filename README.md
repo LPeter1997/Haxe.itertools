@@ -53,14 +53,19 @@ All operations (unless they reduce to a final result, like `all` or `count`) are
 
 Contents of `Basic`:
 
- * `count(start = 0, step = 1)`: Creates an infinite `Int` counter iterator,
- starting from `start`, stepping `step` each time.
+ * `count(start = 0, step = 1)`: Creates an infinite `Int` counter iterable, starting from `start`, stepping `step` each time.
 
- * `repeat(element)`: Creates an infinite iterator, that repeats `element`.
+ * `repeat(element)`: Creates an infinite iterable, that repeats `element`.
+
+ * `empty()`: Creates an empty iterable.
+
+ * `one(element)`: Creates an iterable, that yields `element` once.
 
 Contents of `Extensions`:
 
- * `toIterable(it)`: Casts `it` to an `Iterable<T>`. Useful for unambiguously referring to the extension functions when working with `Array<T>`s.
+ * `asIterable(it)`: Casts `it` to an `Iterable<T>`. Useful for unambiguously referring to the extension functions when working with `Array<T>`s.
+
+ * `asOnceIterable(it)`: Casts the `it` iterator to an `Iterable<T>` that can only be used once.
 
  * `toArray(it)`: Collects the elements of `it` into an `Array<T>`.
 
@@ -108,7 +113,7 @@ Contents of `Extensions`:
 
  * `foldl(it, seed, acc)`: Performs a fold left operation, starting with `seed`, feeding in the elements of `it` and the partial result into `acc`.
 
- * `flatten(it)`: Flattens an iterator of iterators into a flat element structure (`Iterator<Iterator<T>> -> Iterator<T>`).
+ * `flatten(it)`: Flattens an iterable of iterables into a flat element structure (`iterable<iterable<T>> -> iterable<T>`).
 
  * `flatMap(it, f)`: Transforms each element of `it` into a sequence, that are then flattened.
 

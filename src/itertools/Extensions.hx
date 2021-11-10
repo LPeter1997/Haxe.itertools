@@ -22,6 +22,14 @@ class Extensions {
         return it;
 
     /**
+        Utility to cast an iterator to an `Iterable<T>`.
+
+        Useful for things like using `Map<T>.keys()` to use in the API.
+    **/
+    public static function asOnceIterable<T>(it:Iterator<T>):Iterable<T>
+        return new OnceIterable(new FuncIterable(() -> it));
+
+    /**
         Collects the elements of an iterable to an `Array`.
 
         @param it The iterable to collect the elements of.

@@ -26,7 +26,7 @@ class ReverseIterator<T> {
     function buildIfNeeded() {
         if (this.arr != null)
             return;
-        this.arr = Extensions.toArray(new FuncIterable(() -> this.it));
+        this.arr = Extensions.toArray(Extensions.asOnceIterable(this.it));
         this.idx = this.arr.length;
     }
 }
