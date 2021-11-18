@@ -1,13 +1,13 @@
 {
     "name": "itertools",
-    "url": "https://github.com/LanguageDev/Haxe.itertools",
+    "url": "https://github.com/LPeter1997/Haxe.itertools",
     "license": "Apache",
     "tags": [
         "iterator",
         "utility"
     ],
     "description": "Provides a fluent iterator API similar to C# LINQ or Java Stream.",
-    "version": "0.0.5",
+    "version": "0.0.6",
     "classPath": "src/",
     "releasenote": "See CHANGES.md for changes.",
     "contributors": [
